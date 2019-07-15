@@ -2,8 +2,8 @@ from PIL import Image, ImageDraw
 from Sphere import Sphere
 import numpy as np
 
-imgx = 300
-imgy = 300
+imgx = 800
+imgy = 600
 
 img = Image.new('RGB', (imgx, imgy), color = 'black')
 pixelMap = img.load()
@@ -24,7 +24,7 @@ for i in range(img.size[0]):
 		ndcx = (i+0.5)/imgx
 		ndcy = (j+0.5)/imgy
 
-		psx = 2 * ndcx - 1
+		psx = (2 * ndcx - 1)*(imgx/imgy)
 		psy = 1- 2 * ndcy
 
 		rayDirection = -1*np.array([0,0,1]) + psx*np.array([1,0,0]) + psy*np.array([0,1,0])
